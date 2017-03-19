@@ -1,0 +1,50 @@
+<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
+    <string name="app_name">Movies</string>
+
+    <!-- Label for the sort order preference [CHAR LIMIT=30] -->
+    <string name="pref_sort_label">Movie Sort Order</string>
+
+    <!-- Label for Top Rated sort order preference [CHAR LIMIT=25] -->
+    <string name="pref_sort_label_top_rated">Top Rated</string>
+
+    <!-- Label for Most Popular sort order in  preference [CHAR LIMIT=25] -->
+    <string name="pref_sort_label_most_popular">Most Popular</string>
+
+    <!-- Label for favourite sort order in  preference [CHAR LIMIT=25] -->
+    <string name="pref_sort_label_favourite">Favourite</string>
+
+    <!-- Key name for sort ordered preference in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_key" translatable="false">sort</string>
+
+    <!-- Value in SharedPreferences for top rated sort order option [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_top" translatable="false">top_rated</string>
+
+    <!-- Value in SharedPreferences for most popular sort order option [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_popular" translatable="false">popular</string>
+
+    <!-- Value in SharedPreferences for favourite sort order option [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_favourite" translatable="false">favourite</string>
+
+    <!-- Settings label -->
+    <string name="action_settings" >Settings</string>
+
+    <string name="title_activity_detail">Detail</string>
+    <string name="title_settings">Setting</string>
+
+    <string name="action_share">Share</string>
+
+    <!-- SyncAdapter related -->
+    <string name="sync_account_type">moviedb.vin.com</string>
+    <string name="content_authority">com.vin.moviedb</string>
+
+    <!-- Detail Fragment -->
+    <string name="rating_separator" translatable="false">/</string>
+    <string name="rating_highest" translatable="false">10</string>
+
+    <!-- Movie Trailer-->
+    <string name="label_movie_trailer" translatable="false">Trailers</string>
+    <!-- Movie Review-->
+    <string name="label_movie_review" translatable="false">Reviews</string>
+    <string name="label_movie_review_author_hyphen">- <xliff:g id="condition">%1$s</xliff:g></string>
+
+</resources>

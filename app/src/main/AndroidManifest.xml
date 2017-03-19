@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vin.moviedb">
+    <uses-sdk android:minSdkVersion="15" />
+    <!-- This permission is necessary in order for App to perform network access. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- This permission placed to facilitate verify internet connection on the device
+    Refer: http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out
+    -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Permissions required by the sync adapter -->
+    <uses-permission
+        android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission
+        android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission
+        android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+
+    <!-- App icon downloaded from https://www.iconfinder.com/ -->
+    <application
+        android:icon="@mipmap/ic_movie"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity android:name=".PosterActivity"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".DetailMovieActivity"
+            android:label="@string/title_activity_detail"
+            android:parentActivityName=".PosterActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PosterActivity" />
+        </activity>
+
+        <activity android:name=".SettingsActivity"
+            android:theme="@style/SettingsTheme"
+            android:label="@string/title_settings"
+            android:parentActivityName=".PosterActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PosterActivity" />
+        </activity>
+
+        <!-- SyncAdapter's dummy authentication service -->
+        <service android:name=".sync.MovieAuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <!-- The SyncAdapter service -->
+        <service
+            android:name=".sync.MovieSyncAdapterService"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+
+        <provider
+            android:name=".data.MovieContentProvider"
+            android:authorities="com.vin.moviedb"
+            android:enabled="true"
+            android:exported="true"
+            />
+
+    </application>
+
+</manifest>
