@@ -9,7 +9,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -65,10 +67,11 @@ public class FetchMovieTrailerTask extends AsyncTask<Long, Void, ArrayList<Movie
 
             mMovieTrailerAdapter = new MovieTrailerAdapter(movieTrailers);
 
-            LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(mContext ,LinearLayoutManager.HORIZONTAL, false);
             mListView.setLayoutManager(layoutManager);
             mListView.setHasFixedSize(true);
             mListView.setAdapter(mMovieTrailerAdapter);
+
 
             // build share intent
             Uri shareIntentUri = Uri.parse("http://www.youtube.com/watch")

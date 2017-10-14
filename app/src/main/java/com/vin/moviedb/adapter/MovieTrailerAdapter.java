@@ -8,8 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.vin.moviedb.R;
 import com.vin.moviedb.prensenter.MovieTrailer;
 
@@ -53,18 +54,26 @@ public class MovieTrailerAdapter extends RecyclerView.Adapter<MovieTrailerAdapte
 
     class TrailerViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mListViewTextItem;
+        ImageView mListViewImageItem;
         Context mContext;
 
         TrailerViewHolder(View itemView, Context context) {
             super(itemView);
-            mListViewTextItem = (TextView) itemView.findViewById(R.id.detail_movie_trailer_item);
+            mListViewImageItem = (ImageView) itemView.findViewById(R.id.detail_movie_trailer_item);
             mContext = context;
         }
 
         void bind(final MovieTrailer movieTrailer) {
-            mListViewTextItem.setText(movieTrailer.getName());
-            mListViewTextItem.setOnClickListener(new View.OnClickListener() {
+            String img_url = "http://img.youtube.com/vi/" + movieTrailer.getYoutubeKey() + "/0.jpg";
+            Glide
+                    .with(mContext)
+                    .load(img_url)
+                    .centerCrop()
+                    .placeholder(R.drawable.ic_trailer)
+                    .crossFade()
+                    .into(mListViewImageItem);
+
+            mListViewImageItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {

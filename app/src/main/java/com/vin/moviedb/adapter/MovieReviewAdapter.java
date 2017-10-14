@@ -62,8 +62,12 @@ public class MovieReviewAdapter extends RecyclerView.Adapter<MovieReviewAdapter.
 
         void bind(final MovieReview movieReview) {
             mListViewReviewContent.setText(movieReview.getContent());
-            mListViewReviewAuthor.setText(String.format(mContext.getResources().getString(R.string.label_movie_review_author_hyphen)
-                    ,movieReview.getAuthor()));
+            mListViewReviewAuthor.setText(
+                    String.format(
+                            mContext.getResources().getString(R.string.label_movie_review_author_hyphen),
+                            movieReview.getAuthor()
+                    )
+            );
         }
 
     }
